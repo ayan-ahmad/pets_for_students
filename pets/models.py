@@ -24,14 +24,6 @@ class Cat(models.Model):
             self.owner.save()
         super(Cat, self).save(*args, **kwargs)
 
-
-
-    def delete(self, *args, **kwargs):
-        print("Kill cat")
-        self.owner.num_cats -= 1
-        self.owner.save()
-        super(Cat, self).delete(*args, **kwargs)
-
     class Meta:
         ordering = ["name"]
 
