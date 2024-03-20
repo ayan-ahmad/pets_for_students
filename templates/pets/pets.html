@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <img src="{% static 'images/cats_with_fire.jpg' %}" alt="Picture of Cat with Fire"/>
+    <h1>All the cats are:</h1>
+    {% if cats %}
+        <ul>
+            {% for cat in cats %}
+                <li>{{ cat }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no cats</strong>
+    {% endif %}
+    Click to go back to <a href="/">Home</a>
+</body>
+</html>

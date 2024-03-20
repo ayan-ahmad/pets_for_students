@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <img src="{% static 'images/cat.png' %}" alt="Picture of Cat"/>
+    <h1>The Student and their cats are:</h1>
+    {% if students %}
+        <ul>
+            {% for student in students %}
+                <li>{{ student }} has <strong>{{ student.num_cats }}</strong> cat{% if student.num_cats != 1 %}s{% endif %}
+                {% if student.num_cats > 0 %}
+                    <ul>
+                        {% for cat in student.cat_set.all %}
+                            <li>
+                                {{ cat.name }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <strong>{{ student }} has no cats</strong>
+                {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no students</strong>
+    {% endif %}
+    <a href="/pets">About Pets of Students</a>
+</body>
+</html>
