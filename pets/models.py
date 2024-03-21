@@ -17,6 +17,7 @@ class Student(models.Model):
 class Cat(models.Model):
     owner = models.ForeignKey(Student, on_delete=models.CASCADE)
     name = models.CharField(max_length=32)
+    image = models.ImageField(upload_to='images/pets')
 
     def save(self, *args, **kwargs):
         if not self.pk:
