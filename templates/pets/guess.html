@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Pets of Students</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    {% if random_cat %}
+        <script>
+            function submit_guess(){
+                const guess = document.getElementById("guess").value;
+                let element = document.createElement("p");
+                let output = document.getElementById("output");
+                let text;
+                if(output.childElementCount !== 0) return;
+                if(guess.toLowerCase() === "{{ random_cat }}".toLowerCase()){
+                    text = document.createTextNode("You guessed correctly! It is {{ random_cat }}!");
+                    element.classList.add("green");
+                } else {
+                    text = document.createTextNode("You guessed incorrectly :( It was {{ random_cat }}!");
+                    element.classList.add("red");
+                }
+                element.append(text);
+                output.append(element);
+            }
+        </script>
+        <div class="flex-container-vertical">
+            <h1>Guess the cat:</h1>
+            <img src="{{ MEDIA_URL }}{{ random_cat.image }}" alt="Picture of an unnamed cat" style="width:256px;">
+            <div id="output" class="align-centre"></div>
+            <input type="text" id="guess" placeholder="The cats name">
+            <div class="flex-container-horizontal">
+                <button onclick="submit_guess()">Submit Guess</button>
+                <button onclick="window.location.reload()">Guess Again</button>
+            </div>
+        </div>
+    {% else %}
+        <p class="align-centre"><strong>There are no cats to guess.</strong></p>
+    {% endif %}
+    <p class="align-centre">Click to go back to <a href="/">Home</a></p>
+</body>
+</html>

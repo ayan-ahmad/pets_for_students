@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
@@ -35,3 +37,7 @@ class Cat(models.Model):
 def update_num_cats_on_delete(sender, instance, **kwargs):
     instance.owner.num_cats -= 1
     instance.owner.save()
+
+    if instance.image:
+        if os.path.isfile(instance.image.path):
+            os.remove(instance.image.path)

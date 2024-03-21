@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Pets For Students</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>
     <img src="{% static 'images/cat.png' %}" alt="Picture of Cat"/>
@@ -27,8 +28,11 @@
             {% endfor %}
         </ul>
     {% else %}
-        <strong>There are no students</strong>
+        <p><strong>There are no students</strong></p>
     {% endif %}
-    <a href="/pets">About Pets of Students</a>
+    <div class="flex-container-horizontal" style="width:fit-content">
+        <a href="/pets">About Pets of Students</a>
+        <a href="/guess">(New) Guess the Pet!</a>
+    </div>
 </body>
 </html>

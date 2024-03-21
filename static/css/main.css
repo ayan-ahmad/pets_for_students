@@ -1,0 +1,37 @@
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+.square-image {
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
+}
+
+.flex-container-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.flex-container-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.align-centre {
+    text-align: center;
+}
+
+.green{
+    color: green;
+}
+
+.red {
+    color: red;
+}

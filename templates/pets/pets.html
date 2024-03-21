@@ -4,22 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>About Pets of Students</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>
-    <img src="{% static 'images/cats_with_fire.jpg' %}" alt="Picture of Cat with Fire"/>
-    <h1>All the cats are:</h1>
+    <div class="flex-container-horizontal">
+        <img src="{% static 'images/cats_with_fire.jpg' %}" alt="Picture of Cat with Fire"/>
+    </div>
+    <h1 class="align-centre">All the cats are:</h1>
     {% if cats %}
-        <ul>
+        <div class="flex-container-horizontal">
             {% for cat in cats %}
-                <li>
-                    {{ cat }}
-                    <img src="{{ MEDIA_URL }}{{ cat.image }}" alt="Picture of {{ cat }}" style="max-width:128px;">
-                </li>
+                <div>
+                    <img class="square-image" src="{{ MEDIA_URL }}{{ cat.image }}" alt="Picture of {{ cat.name }}">
+                    <p class="align-centre">{{ cat.name }}</p>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     {% else %}
         <strong>There are no cats</strong>
     {% endif %}
-    Click to go back to <a href="/">Home</a>
+    <p class="align-centre">Click to go back to <a href="/">Home</a></p>
 </body>
 </html>
